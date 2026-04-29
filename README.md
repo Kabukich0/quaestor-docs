@@ -10,7 +10,7 @@ Quaestor protocol stack.
 | [`quaestor-core`](https://github.com/Kabukich0/quaestor-core) | Local daemon: vault, mandate signing, ledger, sign-x402 / sign-ap2 / sign-mppx, JWKS |
 | [`quaestor-bridge`](https://github.com/Kabukich0/quaestor-bridge) | Protocol translation: x402 / AP2 / MPP-X adapters via core-signs |
 | [`quaestor-mcp`](https://github.com/Kabukich0/quaestor-mcp) | MCP server exposing mandate + payment + ledger surface to Claude Desktop, Cursor, Cline |
-| [`quaestor-demos`](https://github.com/Kabukich0/quaestor-demos) | Programmatic demo videos (Remotion + edge-tts), one per shipped phase |
+| [`quaestor-demos`](https://github.com/Kabukich0/quaestor-demos) | Phase walkthroughs. Latest: [v0.1.5a](https://github.com/Kabukich0/quaestor-demos/releases/tag/v0.1.5a) |
 
 ## Active handoffs
 
