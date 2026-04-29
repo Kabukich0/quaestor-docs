@@ -30,7 +30,7 @@ I've been building Quaestor — sovereign keys (never leave the device),
 hash-chained ledger, five protocols (MPP / x402 / AP2 / ACP / MCP) from one
 mandate JWT. Open core, MIT, MCP-native. Phase 1 shipped this week.
 
-Demo: https://github.com/PawCheck1/quaestor-mcp/blob/main/examples/programmatic-mcp-client.ts
+Demo: https://github.com/Kabukich0/quaestor-mcp/blob/main/examples/programmatic-mcp-client.ts
 (in-process MCP server drives all 6 tools end-to-end against a live core
 daemon — exit 0 in ~2 seconds).
 
@@ -61,7 +61,7 @@ The technical claim that's hard to make work: AP2's settlement delegates
 to x402's adapter rather than reimplementing — verified by a `vi.spyOn`
 test in CI.
 
-Repo: https://github.com/PawCheck1/quaestor-bridge
+Repo: https://github.com/Kabukich0/quaestor-bridge
 
 Open to your read on the wire format. 15 minutes? Happy to demo against a
 local merchant on Zoom.
@@ -92,7 +92,7 @@ co-founder for the round; first hires (protocols engineer, cryptography
 engineer, founding GTM) planned post-funding.
 
 Phase 1.3 status doc:
-https://github.com/PawCheck1/quaestor-mcp/blob/main/STATUS.md
+https://github.com/Kabukich0/quaestor-mcp/blob/main/STATUS.md
 
 Raising $1.5–2.5M seed at $10–14M post. 20-min intro call this week or next?
 

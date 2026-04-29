@@ -1,6 +1,6 @@
 # Protocol bridge — speaking MPP, x402 v2, and AP2 from one mandate
 
-> **What this document is.** A reference for *how* [`quaestor-bridge`](https://github.com/PawCheck1/quaestor-bridge) translates a single Quaestor mandate credential into the wire format three different agent-payment ecosystems insist on, *why* the SDK versions are pinned exactly, and *what* spec / SDK drift we have already absorbed. The companion in-repo doc is [`quaestor-bridge/ARCHITECTURE.md`](https://github.com/PawCheck1/quaestor-bridge/blob/main/ARCHITECTURE.md); this document is the externally-readable summary for people who do not yet want to clone the repo.
+> **What this document is.** A reference for *how* [`quaestor-bridge`](https://github.com/Kabukich0/quaestor-bridge) translates a single Quaestor mandate credential into the wire format three different agent-payment ecosystems insist on, *why* the SDK versions are pinned exactly, and *what* spec / SDK drift we have already absorbed. The companion in-repo doc is [`quaestor-bridge/ARCHITECTURE.md`](https://github.com/Kabukich0/quaestor-bridge/blob/main/ARCHITECTURE.md); this document is the externally-readable summary for people who do not yet want to clone the repo.
 
 ## The shape of the problem
 
@@ -37,18 +37,18 @@ The same credential can be projected into any of the three formats; the adapter 
 
 ### MPP adapter — `src/adapters/mpp.ts`
 
-[`MppAdapter`](https://github.com/PawCheck1/quaestor-bridge/blob/main/src/adapters/mpp.ts) emits the IETF Payment header. One-shot:
+[`MppAdapter`](https://github.com/Kabukich0/quaestor-bridge/blob/main/src/adapters/mpp.ts) emits the IETF Payment header. One-shot:
 
 ```
 Authorization: Payment scheme=mpp; v=1; network=<n>; currency=<c>;
                        amount=<a>; recipient=<r>; ref=<credential_id>
 ```
 
-The March-2026 sessions primitive is supported as well, with `kind=session; session=mpp_sess_<credential_id>; amount_max=<n>; expires=<epoch>` for streaming micropayments where the agent and merchant agree to a cap rather than a per-call amount. Verified by [`test/mpp.test.ts`](https://github.com/PawCheck1/quaestor-bridge/blob/main/test/mpp.test.ts) and the runtime-resilience regression in [`test/mpp-runtime.test.ts`](https://github.com/PawCheck1/quaestor-bridge/blob/main/test/mpp-runtime.test.ts).
+The March-2026 sessions primitive is supported as well, with `kind=session; session=mpp_sess_<credential_id>; amount_max=<n>; expires=<epoch>` for streaming micropayments where the agent and merchant agree to a cap rather than a per-call amount. Verified by [`test/mpp.test.ts`](https://github.com/Kabukich0/quaestor-bridge/blob/main/test/mpp.test.ts) and the runtime-resilience regression in [`test/mpp-runtime.test.ts`](https://github.com/Kabukich0/quaestor-bridge/blob/main/test/mpp-runtime.test.ts).
 
 ### x402 adapter — `src/adapters/x402.ts`
 
-[`X402Adapter`](https://github.com/PawCheck1/quaestor-bridge/blob/main/src/adapters/x402.ts) emits the Coinbase x402 v2 envelope:
+[`X402Adapter`](https://github.com/Kabukich0/quaestor-bridge/blob/main/src/adapters/x402.ts) emits the Coinbase x402 v2 envelope:
 
 ```json
 { "v": 2, "scheme": "exact", "network": "<n>", "payTo": "<r>",
@@ -56,11 +56,11 @@ The March-2026 sessions primitive is supported as well, with `kind=session; sess
   "reference": "<credential_id>", "extras": {} }
 ```
 
-base64url-encoded as the `X-PAYMENT` header value. Verified for `base-sepolia`, `solana-devnet`, and `tempo-testnet` parametrically in [`test/x402.test.ts`](https://github.com/PawCheck1/quaestor-bridge/blob/main/test/x402.test.ts) (`it.each`). Mainnet is refused unless `QUAESTOR_MAINNET=1`.
+base64url-encoded as the `X-PAYMENT` header value. Verified for `base-sepolia`, `solana-devnet`, and `tempo-testnet` parametrically in [`test/x402.test.ts`](https://github.com/Kabukich0/quaestor-bridge/blob/main/test/x402.test.ts) (`it.each`). Mainnet is refused unless `QUAESTOR_MAINNET=1`.
 
 ### AP2 adapter — `src/adapters/ap2.ts`
 
-AP2 is an A2A extension, not a separate settlement protocol. [`Ap2Adapter`](https://github.com/PawCheck1/quaestor-bridge/blob/main/src/adapters/ap2.ts) parses the A2A 402 challenge, validates that the `accepts` list contains an `ap2` payload, then **calls `X402Adapter.pay` to actually settle** and wraps the resulting `X-PAYMENT` in an AP2 envelope. The `vi.spyOn(x402, 'pay')` assertion in [`test/ap2.test.ts`](https://github.com/PawCheck1/quaestor-bridge/blob/main/test/ap2.test.ts) ensures AP2 *delegates* to x402 rather than reimplementing settlement — if AP2's spec evolves the way it references settlement, that change happens in `adapters/x402.ts`, not in two parallel code paths.
+AP2 is an A2A extension, not a separate settlement protocol. [`Ap2Adapter`](https://github.com/Kabukich0/quaestor-bridge/blob/main/src/adapters/ap2.ts) parses the A2A 402 challenge, validates that the `accepts` list contains an `ap2` payload, then **calls `X402Adapter.pay` to actually settle** and wraps the resulting `X-PAYMENT` in an AP2 envelope. The `vi.spyOn(x402, 'pay')` assertion in [`test/ap2.test.ts`](https://github.com/Kabukich0/quaestor-bridge/blob/main/test/ap2.test.ts) ensures AP2 *delegates* to x402 rather than reimplementing settlement — if AP2's spec evolves the way it references settlement, that change happens in `adapters/x402.ts`, not in two parallel code paths.
 
 ## SDK pinning rationale
 
@@ -94,13 +94,13 @@ The in-house builders produce the same wire format the published SDKs are *suppo
 
 By construction, not by oversight:
 
-- **Does not hold keys.** Every committed file is greppped for private-key-shaped strings on every CI run by [`test/ap2.test.ts → "no key material leaks"`](https://github.com/PawCheck1/quaestor-bridge/blob/main/test/ap2.test.ts). If anyone ever introduces a key to the bridge, the build fails.
+- **Does not hold keys.** Every committed file is greppped for private-key-shaped strings on every CI run by [`test/ap2.test.ts → "no key material leaks"`](https://github.com/Kabukich0/quaestor-bridge/blob/main/test/ap2.test.ts). If anyone ever introduces a key to the bridge, the build fails.
 - **Does not verify mandate JWTs.** Every redeem is a `POST /mandate/redeem` to core. Core decides validity; the bridge transports the verdict.
 - **Does not pick policy.** Network classification (testnet vs mainnet), mainnet opt-in (`QUAESTOR_MAINNET=1`), and ledger writes are all gated by env vars or proxied through core. The bridge has no admin surface.
 - **Does not persist state.** Restarting the bridge loses nothing. The ledger is core's job.
 
 ## What's next on the protocol surface
 
-Documented in [`quaestor-bridge/STATUS.md → Next phase`](https://github.com/PawCheck1/quaestor-bridge/blob/main/STATUS.md): expose `pay_mpp`, `pay_x402`, `pay_ap2`, and a routing helper `pay_from_402` as MCP tools so an agent can pay through stdio MCP without ever touching HTTP directly. The trust boundary stays the same — the MCP transport reuses core's `X-Local-Auth` bearer.
+Documented in [`quaestor-bridge/STATUS.md → Next phase`](https://github.com/Kabukich0/quaestor-bridge/blob/main/STATUS.md): expose `pay_mpp`, `pay_x402`, `pay_ap2`, and a routing helper `pay_from_402` as MCP tools so an agent can pay through stdio MCP without ever touching HTTP directly. The trust boundary stays the same — the MCP transport reuses core's `X-Local-Auth` bearer.
 
 When upstream `mppx` and `x402` ship fixed tarballs, we drop the per-process fallback warning and add a contract-test layer that round-trips our envelopes against a mock facilitator. This is the most important "known gap" to close on the bridge — until then we have correct-on-paper wire format that has not been validated against a real facilitator response.

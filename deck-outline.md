@@ -102,7 +102,7 @@ Skim-readable in 90 seconds, deep on demand.
 **Purpose:** Honest snapshot. Avoid the temptation to dress up a pre-launch repo.
 
 - _Needs production data — fill in before the deck ships:_
-  - GitHub stars (today: ~0; check `gh repo view PawCheck1/quaestor-core --json stargazerCount`)
+  - GitHub stars (today: ~0; check `gh repo view Kabukich0/quaestor-core --json stargazerCount`)
   - MCP installs / Claude Code skill installs
   - Paying users (today: 0)
   - Discord members

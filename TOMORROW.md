@@ -10,7 +10,7 @@ Recovered from yesterday's iCloud disk-space crash, fixed the un-awaited rejects
 
 Then: chased and fixed three CI failures in sequence — bridge sibling repo missing in CI runner (added clone step gated on `BRIDGE_TOKEN` secret), bridge `dist/` not shipping in pnpm 9's `file:` virtual-store entry (replaced with rsync materialization step), and the actual root cause: bridge's published `package.json` `exports."."` points at `./dist/index.js` while its `tsconfig.rootDir: "."` build emits to `./dist/src/index.js`. CI now patches the cloned bridge's package.json before build. Both bridge fixes recorded in Outstanding below as Phase 1.5 cleanup.
 
-CI run: https://github.com/PawCheck1/quaestor-mcp/actions/runs/25125854511 — green in 55 s, 43/43 vitest passing.
+CI run: https://github.com/Kabukich0/quaestor-mcp/actions/runs/25125854511 — green in 55 s, 43/43 vitest passing.
 
 `quaestor-mcp` tip of `main`: `90e857e  docs: add CI/status/Node/license badges` (after Task 6).
 
@@ -56,7 +56,7 @@ Carried forward — not started this batch, deliberately deferred.
 - **Iroh P2P sync** — roadmap, not committed. Multi-machine mandate sync is the headline of the Cloud-sync paid tier; until Iroh ships, single-device only.
 - **Demo video for MCP (Claude Code paying for Vercel)** — recording task, not coding. Highest-leverage missing fundraising asset; called out in `deck-outline.md → Visual artifacts needed`.
 - **Logo / wordmark design** — design task. "Federal Reserve meets Stripe" theme per game plan; off-white background, oxblood accent, serif headlines, mono code.
-- **Push bridge `package.json` exports fix (`./dist/src/` paths, version bump to 0.1.2) to PawCheck1/quaestor-bridge** — removes the "Patch quaestor-bridge package.json exports" step from `quaestor-mcp/.github/workflows/test.yml`. Phase 1.5 cleanup.
+- **Push bridge `package.json` exports fix (`./dist/src/` paths, version bump to 0.1.2) to Kabukich0/quaestor-bridge** — removes the "Patch quaestor-bridge package.json exports" step from `quaestor-mcp/.github/workflows/test.yml`. Phase 1.5 cleanup.
 - **Fix bridge's `.npmignore` (or remove `dist/` from `.gitignore`) so pnpm 9 packs `file:` deps with `dist` included** — removes the rsync materialize step from `quaestor-mcp` CI. Phase 1.5 cleanup.
 
 ## Next session priorities
@@ -69,11 +69,11 @@ Carried forward — not started this batch, deliberately deferred.
 
 | Repo | Latest commit | Pushed? |
 | --- | --- | --- |
-| `PawCheck1/quaestor-core` | `962aebc  docs: add CI/status/Node/license badges` | yes |
-| `PawCheck1/quaestor-bridge` | `7bd0370  docs: add CI/status/Node/license badges` | yes |
-| `PawCheck1/quaestor-mcp` | `90e857e  docs: add CI/status/Node/license badges` | yes |
-| `PawCheck1/quaestor-docs` | (this commit, see below) | yes |
+| `Kabukich0/quaestor-core` | `962aebc  docs: add CI/status/Node/license badges` | yes |
+| `Kabukich0/quaestor-bridge` | `7bd0370  docs: add CI/status/Node/license badges` | yes |
+| `Kabukich0/quaestor-mcp` | `90e857e  docs: add CI/status/Node/license badges` | yes |
+| `Kabukich0/quaestor-docs` | (this commit, see below) | yes |
 
-CI on `quaestor-mcp`: green at https://github.com/PawCheck1/quaestor-mcp/actions/runs/25125854511 (Task 1 baseline). Subsequent commits to `main` since then trigger fresh runs — verify those are also green before claiming "all green" on the README badge.
+CI on `quaestor-mcp`: green at https://github.com/Kabukich0/quaestor-mcp/actions/runs/25125854511 (Task 1 baseline). Subsequent commits to `main` since then trigger fresh runs — verify those are also green before claiming "all green" on the README badge.
 
 All four working trees clean, on `main`, up to date with `origin/main`.

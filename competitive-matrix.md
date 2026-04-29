@@ -21,7 +21,7 @@ Pretending a v0.1.1 alpha is on parity with $5M-funded competitors is exactly th
 
 - **No production deployments.** Quaestor has not settled a single dollar through a real merchant in production. The demo runs against fixture 402s, not live facilitators.
 - **No funding, no team beyond a single contributor.** Competitors with seed rounds have runway and account-management muscle Quaestor does not.
-- **Upstream receipt verification is scaffolded, not enforced.** `POST /ledger/receipt` records what the bridge reports; it does not re-query the chain or facilitator to confirm `tx_hash`. (Listed as a Known gap in [`quaestor-core/STATUS.md`](https://github.com/PawCheck1/quaestor-core/blob/main/STATUS.md#known-gaps); v0.2 target.)
+- **Upstream receipt verification is scaffolded, not enforced.** `POST /ledger/receipt` records what the bridge reports; it does not re-query the chain or facilitator to confirm `tx_hash`. (Listed as a Known gap in [`quaestor-core/STATUS.md`](https://github.com/Kabukich0/quaestor-core/blob/main/STATUS.md#known-gaps); v0.2 target.)
 - **No mandate revocation endpoint.** Today the only way to invalidate a mandate is to let it expire or exhaust its `use_counter_max`. Competitors with a hosted control plane can revoke instantly.
 - **No vault rotation or recovery flow.** Losing the OS-keychain KEK = losing the vault. Custodial competitors recover users via their support flow.
 - **`mppx@0.6.7` and `x402@1.2.0` ship empty `dist/` on npm.** Quaestor's adapters fall back to in-house IETF/v2 builders, which are correct on paper but not yet validated by a real facilitator round-trip. (See [`protocol-bridge.md → SDK pinning`](./protocol-bridge.md).)
@@ -43,4 +43,4 @@ What the matrix above is meant to show, calibrated against the weaknesses:
 - **Keyban funding** (€500K pre-seed): same as above — provided as context.
 - All other competitor cells: cross-checked against publicly known positioning as of 2026-04-29; uncertain entries marked `?` rather than guessed.
 
-If you are reviewing this matrix and a cell is wrong, please open an issue on `PawCheck1/quaestor-docs` — being right matters more here than looking right.
+If you are reviewing this matrix and a cell is wrong, please open an issue on `Kabukich0/quaestor-docs` — being right matters more here than looking right.
