@@ -31,6 +31,7 @@ Pretending a v0.1.1 alpha is on parity with $5M-funded competitors is exactly th
 
 What the matrix above is meant to show, calibrated against the weaknesses:
 
+- **Trust model is structural, not a feature flag.** Custodial competitors built their cap tables and product roadmaps around hosted-wallet revenue models. Pivoting to local-first means rewriting the product *and* explaining to existing investors why the original thesis was wrong. Quaestor's local-first design is the founding architectural choice — there is no back-pressure pulling us toward custody.
 - **Custody model.** Quaestor is the only row in the matrix where the answer to "what happens if the provider gets hacked" is "there is no provider." See [`threat-model.md`](./threat-model.md).
 - **Multi-protocol surface.** Three live adapters (MPP, x402 v2, AP2-over-x402) from one mandate is, to our knowledge, unique. Competitors specialize in one rail. See [`protocol-bridge.md`](./protocol-bridge.md).
 - **User-walkable audit chain.** A BLAKE3-chained SQLite WAL ledger that any user can `verify` from genesis is not the same primitive as a provider dashboard.
