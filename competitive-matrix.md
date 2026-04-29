@@ -38,7 +38,7 @@ What the matrix above is meant to show, calibrated against the weaknesses:
 
 ## Sources / verification notes
 
-- **Nekuda funding** ($5M seed; Madrona, Amex Ventures, Visa Ventures): provided to the Quaestor team as context, not independently re-verified for this document. If the round size or syndicate is wrong, this cell should be corrected.
+- **Nekuda funding** ($5M seed; Madrona [lead], Amex Ventures, Visa Ventures): confirmed via BusinessWire press release dated 2025-05-14, URL: https://www.businesswire.com/news/home/20250514808097/en/Nekuda-Raises-$5M-Led-by-Madrona-Together-with-Amex-Ventures-and-Visa-Ventures-to-Power-Agentic-Payments
 - **Keyban funding** (€500K pre-seed): same as above — provided as context.
 - All other competitor cells: cross-checked against publicly known positioning as of 2026-04-29; uncertain entries marked `?` rather than guessed.
 
