@@ -40,7 +40,7 @@ CI run: https://github.com/PawCheck1/quaestor-mcp/actions/runs/25125854511 — g
 
 ### Task 6 — Badges + LICENSE for all three repos
 
-All three repos got `[![CI]][..]` + status + Node + License badges right after the title. None of the three had a LICENSE file committed; added MIT (PawCheck1, 2026) to each. `quaestor-mcp` had no README at all — wrote one with quick-start, status pointer, and link to STATUS.md.
+All three repos got `[![CI]][..]` + status + Node + License badges right after the title. None of the three had a LICENSE file committed; added MIT (Kabukich0, 2026) to each. `quaestor-mcp` had no README at all — wrote one with quick-start, status pointer, and link to STATUS.md.
 
 Commits (all pushed):
 - `quaestor-core`: `962aebc  docs: add CI/status/Node/license badges`

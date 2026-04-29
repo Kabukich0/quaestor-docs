@@ -28,7 +28,7 @@ whole approach.
 
 I've been building Quaestor — sovereign keys (never leave the device),
 hash-chained ledger, five protocols (MPP / x402 / AP2 / ACP / MCP) from one
-mandate JWT. Open core, MIT, MCP-native. Phase 1 shipped this week solo.
+mandate JWT. Open core, MIT, MCP-native. Phase 1 shipped this week.
 
 Demo: https://github.com/PawCheck1/quaestor-mcp/blob/main/examples/programmatic-mcp-client.ts
 (in-process MCP server drives all 6 tools end-to-end against a live core
@@ -37,7 +37,7 @@ daemon — exit 0 in ~2 seconds).
 20 minutes this week or next? Or if it's not a fit — what would change
 your mind?
 
-— Connor
+— Kabukich0
 
 ---
 
@@ -66,36 +66,37 @@ Repo: https://github.com/PawCheck1/quaestor-bridge
 Open to your read on the wire format. 15 minutes? Happy to demo against a
 local merchant on Zoom.
 
-— Connor
+— Kabukich0
 
 ---
 
 ## Draft C — Canadian fund / pre-seed (Inovia / Real Ventures style)
 
-**Subject:** sovereign agent wallet — Phase 1 shipped solo in 36 hrs
+**Subject:** sovereign agent wallet — Phase 1 shipped in 36 hrs
 
 Hi [Name],
 
 [Personalization line — reference a specific portfolio company or thesis post;
 one sentence.]
 
-Quick context: I'm a solo technical founder building Quaestor — the trust &
+Quick context: I'm a solo founder building Quaestor — the trust &
 audit layer for AI agent payments. Local-first sovereign keys, five
 protocols (MPP / x402 / AP2 / ACP / MCP), open-core (MIT) + paid SaaS for
 multi-machine sync, audit, and compliance.
 
-Phase 1 — three repos (`quaestor-core`, `quaestor-bridge`, `quaestor-mcp`)
-end-to-end with green CI — shipped in a 36-hour solo cycle this week. Test
-suites, integration demos, full STATUS.md per repo. No co-founder yet;
-hiring a protocols engineer + cryptography eng + founding GTM post-seed.
+Phase 1 — four repos (`quaestor-core`, `quaestor-bridge`, `quaestor-mcp`,
+`quaestor-docs`) end-to-end with green CI — shipped in a 36-hour focused
+build cycle this week. Test suites, integration demos, full STATUS.md per
+repo. Solo founder shipping at exceptional velocity; not seeking a
+co-founder for the round; first hires (protocols engineer, cryptography
+engineer, founding GTM) planned post-funding.
 
 Phase 1.3 status doc:
 https://github.com/PawCheck1/quaestor-mcp/blob/main/STATUS.md
 
-Raising $1.5–2.5M seed at $10–14M post. Open to lead or follow. 20-min
-intro call this week or next?
+Raising $1.5–2.5M seed at $10–14M post. 20-min intro call this week or next?
 
-— Connor
+— Kabukich0
 
 ---
 

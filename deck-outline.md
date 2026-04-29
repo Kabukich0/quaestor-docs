@@ -17,7 +17,6 @@ Skim-readable in 90 seconds, deep on demand.
 
 - **Purpose:** Anchor the category before the audience invents one for us.
 - Subtitle (one line): "Sovereign agent payments. Keys never leave the device. Five protocols, one mandate."
-- Founder name + role (Connor Hearts, founder)
 - Contact + date in footer
 - One QR code linking to the MCP demo (when the video exists)
 - **Artifact:** none — title slide.
@@ -140,8 +139,8 @@ Skim-readable in 90 seconds, deep on demand.
 
 **Purpose:** Make the ask explicit and defensible.
 
-- **Founder:** Connor Hearts — solo technical founder. Three repos shipped end-to-end in 36 hours. Background in systems / cryptography / agent infra.
-- **No co-founder yet.** Looking for a protocols-and-cryptography-savvy CTO post-seed.
+- **Founder:** Kabukich0. Solo founder shipping at velocity — Phase 1 (core + bridge + mcp + receipt endpoint, 4 repos, full e2e working) shipped in 36 hours of focused build. Background in systems / cryptography / agent infra.
+- **Not seeking a co-founder for the round.** First hires planned post-funding (see below).
 - **First hires (12-month plan):**
   1. Protocols engineer (x402 / MPP / AP2 / ACP wire-format depth)
   2. Cryptography engineer (HD-key + multi-device)
@@ -170,11 +169,10 @@ What the deck designer will need before the visual pass:
 
 These show up in the deck explicitly — diligence reveals them anyway, and disclosing first builds trust.
 
-- **Solo founder.** No co-founder yet. Hire dependency for technical depth in protocols + cryptography.
 - **v0.1.1 alpha.** Three repos shipped, no production deployments yet. Real users = zero on Day Zero.
 - **Real-network testnet integration not yet validated against a real x402 facilitator.** Bridge uses the in-house wire-format builders; we have not posted a live envelope to a Coinbase/Stripe facilitator and watched it accept. Mock 402 fixtures only.
 - **`mppx@0.6.7` and `x402@1.2.0` ship empty `dist/` on npm.** Bridge auto-falls back to in-house builders. Correct on the wire; not exercising the published SDKs. Tracked in bridge `STATUS.md → Spec drift log`.
 - **No mandate revocation endpoint yet.** `revoke_mandate` returns a documented 404 until core ships POST `/mandate/revoke` (Phase 1.4).
 - **No multi-machine sync yet.** Iroh P2P integration is on the roadmap but not built. Single-device today.
 - **Open-core monetization is a bet.** Hash-chained audit logs as a paid product is unproven; could end up looking like Sentry's audit add-on rather than a standalone tier.
-- **Solo founder + alpha + open core** is what makes the round actually fundable at $10–14M post — anyone willing to underwrite *now* is buying the bet that the trust layer is structurally won early. Anyone wanting traction should pass.
+- **Alpha + open core** is what makes the round actually fundable at $10–14M post — anyone willing to underwrite *now* is buying the bet that the trust layer is structurally won early. Anyone wanting traction should pass.
