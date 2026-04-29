@@ -79,14 +79,14 @@ Both pinned tarballs — `mppx@0.6.7` and `x402@1.2.0` — ship with **broken or
 2. **Empty module** — the import resolves but the default export is `undefined`; detected at the call site and the in-house builder engages.
 3. **Hang** — `import()` never settles. This was reproduced specifically against the published `mppx` tarball on Node 22 + pnpm strict store, and it was the root cause of the 2026-04-28 demo hang.
 
-The fix is identical in both adapters: race `import()` against a 2-second `Promise.race` timer. If the timer wins we use the in-house builder. The spec-drift log captures this exactly:
+The fix is identical in both adapters: race `import()` against a 2-second `Promise.race` timer. If the timer wins we use the in-house builder. The spec-drift log captures this exactly. The "Status when bridge was built" column distinguishes protocol history we were already aware of at scaffold time from drift events the bridge actually had to absorb mid-build:
 
-| Date       | Spec / SDK              | Drift                                     | Resolution                                  |
-| ---------- | ----------------------- | ----------------------------------------- | ------------------------------------------- |
-| 2025-12-15 | Coinbase x402 v2        | `payTo` renamed from `recipient`          | Fallback envelope uses `payTo`              |
-| 2026-03-01 | MPP IETF draft          | `sessions` primitive added                | `kind=session` + `amount_max` in header     |
-| 2026-04-12 | AP2 (A2A 1.0 ext)       | Envelope key `extension` (was `ext`)      | AP2 envelope uses `extension: 'ap2'`        |
-| 2026-04-28 | mppx@0.6.7 / x402@1.2.0 | Both ship empty/broken `dist/` on npm     | 2 s timeout-race + per-process fallback warn|
+| Date       | Spec / SDK              | Drift event                               | Status when bridge was built       | Resolution                                  |
+| ---------- | ----------------------- | ----------------------------------------- | ---------------------------------- | ------------------------------------------- |
+| 2025-12-15 | Coinbase x402 v2        | `payTo` renamed from `recipient`          | Already adopted at scaffold time   | Fallback envelope uses `payTo`              |
+| 2026-03-01 | MPP IETF draft          | `sessions` primitive added                | Already adopted at scaffold time   | `kind=session` + `amount_max` in header     |
+| 2026-04-12 | AP2 (A2A 1.0 ext)       | Envelope key `extension` (was `ext`)      | Already adopted at scaffold time   | AP2 envelope uses `extension: 'ap2'`        |
+| 2026-04-28 | mppx@0.6.7 / x402@1.2.0 | Both ship empty/broken `dist/` on npm     | Encountered during build           | 2 s timeout-race + per-process fallback warn|
 
 The in-house builders produce the same wire format the published SDKs are *supposed* to produce. Fallback engagement logs one warning per process (not per call) so an operator running this in production sees exactly one signal that the SDK is broken — the demo continues. The honest caveat: because we currently fall back, **we are not exercising the official SDKs in CI**. When upstream ships fixed tarballs we should remove the fallback warning, bump the pin, and run a contract test against the real wire format.
 
